@@ -2,10 +2,10 @@
 
 namespace Common.Helpers.Configuration
 {
-    public class ConfigurationProvider : IConfigurationProvider
+    public class MyConfigurationProvider : IMyConfigurationProvider
     {
         public ConfigurationModel Configuration { get; private set; }
-        public ConfigurationProvider(IConfiguration configuration) 
+        public MyConfigurationProvider(IConfiguration configuration) 
         {
             Configuration = new ConfigurationModel()
             {

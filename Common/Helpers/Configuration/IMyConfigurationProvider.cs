@@ -1,7 +1,7 @@
 ﻿
 namespace Common.Helpers.Configuration
 {
-    public interface IConfigurationProvider
+    public interface IMyConfigurationProvider
     {
         public ConfigurationModel Configuration { get; }
     }

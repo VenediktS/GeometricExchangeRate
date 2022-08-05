@@ -19,6 +19,10 @@ namespace Aplication.Services
         {
             var date = _dateService.GetDate(new CartesianCoordinates() { X = x, Y = y });
 
+            if (date > DateTime.Now.Date)
+                throw new InvalidDataException("Указана дата в будущем");
+            
+
             return await _cbrService.GetRate(date);
         }
 

@@ -9,8 +9,8 @@ namespace ExternalApiProvider.CBR
 {
     public class CBRCurrencyRateService : ICBRCurrencyRateService
     {
-        private readonly IConfigurationProvider _;
-        public CBRCurrencyRateService(IConfigurationProvider configuration)
+        private readonly IMyConfigurationProvider _;
+        public CBRCurrencyRateService(IMyConfigurationProvider configuration)
         {
             _ = configuration;
         }

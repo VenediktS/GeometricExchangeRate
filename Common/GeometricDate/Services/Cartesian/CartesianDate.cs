@@ -5,8 +5,8 @@ namespace Common.GeometricDate.Services.Cartesian
 {
     public class CartesianDate : IGeometricDate<CartesianCoordinates>
     {
-        private readonly IConfigurationProvider _;
-        public CartesianDate(IConfigurationProvider configuration)
+        private readonly IMyConfigurationProvider _;
+        public CartesianDate(IMyConfigurationProvider configuration)
         {
             _ = configuration;
         }
@@ -21,7 +21,7 @@ namespace Common.GeometricDate.Services.Cartesian
 
         private bool InСircle(CartesianCoordinates coordinates) 
         {
-            return Math.Sqrt(coordinates.X) + Math.Sqrt(coordinates.Y) <= Math.Sqrt(_.Configuration.CircleRadius);
+            return Math.Pow(coordinates.X, 2) + Math.Pow(coordinates.Y, 2) <= Math.Pow(_.Configuration.CircleRadius, 2);
         }
 
         private DateTime GetDateByPartOfCircle(CartesianCoordinates coordinates) 
