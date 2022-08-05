@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.ComponentModel.DataAnnotations;
 
 namespace Common.Helpers.Configuration
 {
@@ -9,10 +10,18 @@ namespace Common.Helpers.Configuration
         {
             Configuration = new ConfigurationModel()
             {
-                CBRAPI = configuration.GetConnectionString("CBRAPI"),
-                CircleRadius = configuration.GetSection("CircleRadius").Get<double>(),
-                ForeignCurrencyCode = configuration.GetSection("ForeignCurrencyCode").Get<string>(),
+                CBRAPI = CheckOption(configuration.GetConnectionString("CBRAPI")),
+                CircleRadius = CheckOption(configuration.GetSection("CircleRadius").Get<double>()),
+                ForeignCurrencyCode = CheckOption(configuration.GetSection("ForeignCurrencyCode").Get<string>()),
             };
+        }
+
+        private T CheckOption<T>(T bound) 
+        {
+            if (bound == null)
+                throw new InvalidOperationException($"Настройка с именем '{nameof(T)}' запрошена как обязательная, но не найдена в файле конфигурации.");
+
+            return bound;
         }
     }
 }
